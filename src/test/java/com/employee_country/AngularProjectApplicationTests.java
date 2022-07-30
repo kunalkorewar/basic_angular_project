@@ -12,25 +12,35 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootTest
 class AngularProjectApplicationTests {
 
-	@Test
-	void contextLoads() {
-		
-	}
+    @Test
+    void contextLoads() {
 
-	@Test
-	public void getEmployeeAPITest() throws URISyntaxException {
+    }
 
-		RestTemplate restTemplate = new RestTemplate();
+    @Test
+    public void getEmployeeAPITest() throws URISyntaxException {
 
-		String baseUrl = "http://localhost:8080/getEmployeeById/1";
+        RestTemplate restTemplate = new RestTemplate();
 
-		URI uri = new URI(baseUrl);
+        String baseUrl = "http://localhost:8080/getEmployeeById/1";
 
-		ResponseEntity<String> result = restTemplate.getForEntity(uri, String.class);
+        URI uri = new URI(baseUrl);
 
-		Assertions.assertEquals(200, result.getStatusCodeValue());
+        ResponseEntity<String> result = restTemplate.getForEntity(uri, String.class);
 
-		System.out.println("done..");
-	}
+        Assertions.assertEquals(200, result.getStatusCodeValue());
 
+        System.out.println("done..");
+    }
+
+    @Test
+    public void getAllEmployee() throws URISyntaxException {
+        RestTemplate restTemplate = new RestTemplate();
+        String baseUrl = "http://localhost:8080/getAllEmployee";
+        URI uri = new URI(baseUrl);
+        ResponseEntity<String> result = restTemplate.getForEntity(uri, String.class);
+        Assertions.assertEquals( 200, result.getStatusCodeValue());
+
+        System.out.println("getAllEmployee test done..");
+    }
 }
